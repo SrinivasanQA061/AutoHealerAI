@@ -1,30 +1,74 @@
-# AutoHealerAI - Intelligent Self-Healing for Test Automation
+# 🤖 AutoHealerAI
 
-Overview
-AutoHealerAI is an innovative solution designed to automatically detect and recover from script failures in test automation, starting with NoSuchElement exceptions. This intelligent system reduces maintenance overhead and increases test stability by implementing self-healing mechanisms.
+**AutoHealerAI** is an intelligent self-healing framework designed to automatically resolve script failures in test automation—starting with handling the **NoSuchElementException** in Selenium-based UI tests.
 
-Key Features
-Automatic NoSuchElement Exception Recovery: Intelligently handles element location failures
+## 🔍 Purpose
 
-Dynamic Locator Adjustment: Automatically updates and retries with alternative locators
+Modern test automation often suffers from brittle scripts due to dynamic locators, frequent UI changes, or inconsistent DOM structures. AutoHealerAI aims to:
 
-Context-Aware Healing: Understands test flow to make smarter recovery decisions
+- Minimize manual debugging and maintenance of failed scripts.
+- Heal test scripts in real-time by identifying alternative strategies.
+- Provide an extensible foundation to support multiple exception types.
 
-Failure Analytics: Provides insights into common failure patterns
+Our initial focus is **automatically healing `NoSuchElementException`**.
 
-Extensible Architecture: Designed to support additional exception types in future releases
+---
 
-How It Works
-Detection: Monitors test execution for targeted exceptions
+## 🚀 Key Features
 
-Analysis: Examines context and available element information
+- 🛠️ **Auto-Healing for NoSuchElementException**
+  - Intelligent DOM scanning and alternative locator strategies.
+  - Uses historical execution data and element context to re-identify missing elements.
 
-Healing: Attempts various recovery strategies:
+- 🔁 **Retry with Smart Locator Suggestions**
+  - Replaces failed locators dynamically using fallback options: XPath variations, CSS selectors, neighbor-based heuristics, etc.
 
-Locator adjustment
+- 📊 **Failure Reporting and Auto-Heal Logs**
+  - Generates reports on healed vs non-healed errors.
+  - Provides traceability of what was healed and how.
 
-Wait condition modification
+- 🧠 **AI/ML Integration (Planned)**
+  - Future releases will include ML models to predict and recommend healing options based on test history and DOM changes.
 
-DOM re-examination
+---
 
-Reporting: Documents healing attempts and outcomes
+## 🧱 Tech Stack
+
+- **Java** (Core Language)
+- **Selenium WebDriver** (UI Automation)
+- **TestNG** (Testing Framework)
+- **Maven** (Build Tool)
+- **Log4j** (Logging)
+- *(Planned)* AI module using **Python/ONNX** for smart healing decisions
+
+---
+
+## 🧪 How It Works (Overview)
+
+1. Test execution starts with standard locators.
+2. On `NoSuchElementException`, AutoHealerAI intercepts the failure.
+3. It analyzes the DOM and searches for similar elements using:
+   - DOM structure similarity
+   - Neighbor-based relations
+   - Historical locator patterns
+4. Applies the best-match locator to recover execution.
+5. Logs the healing decision with a confidence score.
+
+---
+
+## 📁 Project Structure
+
+```bash
+AutoHealerAI/
+│
+├── src/
+│   ├── main/java/com/autohealer/core         # Healing engine logic
+│   ├── main/java/com/autohealer/utils        # DOM utilities and locators
+│   └── test/java/com/autohealer/tests        # Sample test scripts
+│
+├── resources/
+│   └── config.properties                     # Configurable properties
+│
+├── logs/
+├── pom.xml
+└── README.md
