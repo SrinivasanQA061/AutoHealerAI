@@ -1,4 +1,4 @@
-# 🤖 AutoHealerAI
+# 🤖 AutoHealerAI - Intelligent Self-Healing for Test Automation
 
 **AutoHealerAI** is an intelligent self-healing framework designed to automatically resolve script failures in test automation—starting with handling the **NoSuchElementException** in Selenium-based UI tests.
 
